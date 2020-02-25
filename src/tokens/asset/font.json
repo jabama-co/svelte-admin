@@ -1,0 +1,14 @@
+{
+  "asset": {
+    "font": {
+      "icon": {
+        "name": { "value": "Open Sans" },
+        "ttf": { "value": "assets/fonts/OpenSans-Regular.ttf" }
+      },
+      "opensans": {
+        "name": { "value": "Open Sans" },
+        "ttf": { "value": "assets/fonts/OpenSans-Regular.ttf" }
+      }
+    }
+  }
+}
