@@ -1,25 +1,14 @@
-const sass = require('node-sass')
-module.exports = {
-  preprocess: {
-    style: async ({ content, attributes }) => {
-      if (attributes.type !== 'text/scss' && attributes.lang !== 'scss') return
-      return new Promise((resolve, reject) => {
-        sass.render(
-          {
-            data: content,
-            sourceMap: true,
-            outFile: 'x' // this is necessary, but is ignored
-          },
-          (err, result) => {
-            if (err) return reject(err)
+const { aliases, scssAliases } = require('./webpack.parts')
+const magicImporter = require('node-sass-magic-importer')
+const sveltePreprocess = require('svelte-preprocess')
 
-            resolve({
-              code: result.css.toString(),
-              map: result.map.toString()
-            })
-          }
-        )
-      })
-    }
-  }
+module.exports = {
+    preprocess: sveltePreprocess({
+        scss: {
+            importer: [
+                //scssAliases(aliases),
+                magicImporter(),
+            ],
+        },
+    }),
 }

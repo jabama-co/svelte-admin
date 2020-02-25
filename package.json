@@ -1,29 +1,76 @@
 {
-  "name": "svelte-app",
-  "version": "1.0.0",
-  "devDependencies": {
-    "autoprefixer": "^9.7.4",
-    "cross-env": "^5.2.0",
-    "css-loader": "^2.1.1",
-    "mini-css-extract-plugin": "^0.6.0",
-    "node-sass": "^4.13.1",
-    "postcss": "^7.0.27",
-    "postcss-load-config": "^2.1.0",
-    "postcss-loader": "^3.0.0",
-    "sass-loader": "^8.0.2",
-    "serve": "^11.0.0",
-    "style-dictionary": "^2.8.3",
-    "style-loader": "^0.23.1",
-    "svelte": "^3.0.0",
-    "svelte-loader": "2.13.3",
-    "svelte-preprocess": "^3.4.0",
-    "webpack": "^4.30.0",
-    "webpack-cli": "^3.3.0",
-    "webpack-dev-server": "^3.3.1"
-  },
-  "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "dev": "webpack-dev-server --content-base public",
-    "style": "style-dictionary build  --config ./config/config.json"
-  }
+    "name": "svelte-app",
+    "version": "1.0.0",
+    "svelte": "src/index.js",
+    "module": "dist/index.mjs",
+    "main": "dist/index.js",
+    "license": "MIT",
+    "devDependencies": {
+        "@babel/core": "^7.8.4",
+        "@storybook/addon-actions": "^5.3.14",
+        "@storybook/addon-links": "^5.3.14",
+        "@storybook/addons": "^5.3.14",
+        "@storybook/preset-scss": "^1.0.2",
+        "@storybook/svelte": "^5.3.14",
+        "autoprefixer": "^9.7.4",
+        "babel-loader": "^8.0.6",
+        "clean-webpack-plugin": "^3.0.0",
+        "copy-webpack-plugin": "^5.1.1",
+        "cross-env": "^5.2.0",
+        "css-loader": "^2.1.1",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-html": "^6.0.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "eslint-plugin-svelte3": "^2.7.3",
+        "file-loader": "^5.1.0",
+        "husky": "^4.2.3",
+        "lint-staged": "^10.0.7",
+        "mini-css-extract-plugin": "^0.6.0",
+        "node-sass": "^4.13.1",
+        "node-sass-magic-importer": "^5.3.2",
+        "postcss": "^7.0.27",
+        "postcss-loader": "^3.0.0",
+        "prettier": "^1.19.1",
+        "prettier-plugin-svelte": "^0.7.0",
+        "sass-loader": "^8.0.2",
+        "serve": "^11.0.0",
+        "style-dictionary": "^2.8.3",
+        "style-loader": "^0.23.1",
+        "svelte": "^3.19.1",
+        "svelte-loader": "^2.13.6",
+        "svelte-preprocess": "^3.4.0",
+        "webpack": "^4.30.0",
+        "webpack-cli": "^3.3.0",
+        "webpack-dev-server": "^3.3.1",
+        "webpack-merge": "^4.2.2"
+    },
+    "scripts": {
+        "dev": "webpack-dev-server --open --config webpack.dev.js",
+        "build": "webpack --config webpack.prod.js",
+        "storybook": "start-storybook -p 6006",
+        "build-storybook": "build-storybook",
+        "prepublishOnly": "yarn build",
+        "style": "style-dictionary build  --config ./config/config.json",
+        "lint": "eslint --ext .js,.svelte,.html --ignore-path .gitignore .",
+        "lint:fix": "yarn lint --fix",
+        "format": "prettier --write  **/**/*.{svelte,js} **/*.{svelte,js}  --ignore-path .gitignore"
+    },
+    "files": [
+        "src",
+        "dist"
+    ],
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged && yarn build"
+        }
+    },
+    "lint-staged": {
+        "**/*.{svelte, js}": [
+            "yarn format",
+            "yarn lint:fix",
+            "git add"
+        ]
+    },
+    "dependencies": {}
 }

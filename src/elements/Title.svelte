@@ -1,13 +1,15 @@
 <script>
-	export let name;
-	export let title;
+    export let name
 </script>
 
-<style lang="scss">
-@import "./build/scss/variables.scss";
-	h1 {
-		color: $color-base-deep-purple-a-700;
-	}
+<style type="text/scss" lang="scss">
+    @import '../styles/variables.scss';
+    h1 {
+        font: {
+            size: $size-font-large;
+        }
+        color: $color-font-success;
+    }
 </style>
 
-<h1>Hello {name} {title}!</h1>
+<h1>Hello {name}!</h1>
