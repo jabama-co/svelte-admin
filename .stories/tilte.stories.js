@@ -1,4 +1,4 @@
-import Title from '../src/elements/Title.svelte'
+import Title from '../title'
 
 export default { title: 'Title component' }
 
