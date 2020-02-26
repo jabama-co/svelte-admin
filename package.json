@@ -40,7 +40,7 @@
     },
     "scripts": {
         "start": "start-storybook -p 6006",
-        "build": "build-storybook",
+        "build:storybook": "build-storybook",
         "lint": "eslint --ext .js,.svelte,.html --ignore-path .gitignore .",
         "lint:fix": "yarn lint --fix",
         "format": "prettier --write  **/**/*.{svelte,js} **/*.{svelte,js}  --ignore-path .gitignore"
@@ -51,7 +51,7 @@
     ],
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged && yarn build"
+            "pre-commit": "lint-staged"
         }
     },
     "lint-staged": {
