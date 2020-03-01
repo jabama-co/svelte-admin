@@ -40,7 +40,7 @@
     },
     "scripts": {
         "start": "start-storybook -p 6006",
-        "build:storybook": "build-storybook",
+        "docs": "build-storybook -o docs",
         "lint": "eslint --ext .js,.svelte,.html --ignore-path .gitignore .",
         "lint:fix": "yarn lint --fix",
         "format": "prettier --write  **/**/*.{svelte,js} **/*.{svelte,js}  --ignore-path .gitignore"
