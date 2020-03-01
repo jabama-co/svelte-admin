@@ -6,6 +6,7 @@ module.exports = {
     env: {
         es6: true,
         browser: true,
+        node: true,
     },
     plugins: ['svelte3', 'html'],
     overrides: [
@@ -21,5 +22,5 @@ module.exports = {
         'svelte3/ignore-styles': attributes =>
             attributes.lang && attributes.lang.includes('scss'),
     },
-    // extends: ['plugin:prettier/recommended'],
+    extends: ['eslint:recommended'],
 }

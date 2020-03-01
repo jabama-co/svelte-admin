@@ -20,7 +20,7 @@ const scssAliases = aliases => {
             for (const [alias, aliasPath] of Object.entries(aliases)) {
                 if (this.url.indexOf(alias) === 0) {
                     const filePath = path.resolve(
-                        this.url.replace(alias, aliasPath),
+                        this.url.replace(alias, aliasPath)
                     )
                     // console.log('found alias: '+  alias + '; at ' + filePath);
                     return {
@@ -32,7 +32,7 @@ const scssAliases = aliases => {
             const filePath = path.resolve(
                 process.cwd(),
                 'node_modules',
-                this.url,
+                this.url
             )
             //if we can't find anything fall back to node_modules
             return {
@@ -48,15 +48,11 @@ const scssAliases = aliases => {
  * Aliases used during import, shared between webpack and sass-loader
  */
 const aliases = {
-    //TODO: Look at a way to share tsconfig.json paths and these aliases
     svelte: path.resolve('node_modules', 'svelte'),
-    '@src': path.resolve(__dirname, 'src/'),
-    '@styles': path.resolve(__dirname, 'src/styles/'),
-    '@common': path.resolve(__dirname, 'src/common/'),
+    'svelte-admin': path.resolve(__dirname, '../'),
 }
 
 module.exports = ({ config, mode }) => {
-    // console.dir(config, { depth: null });
     let mergedConfig = merge.smart(config, {
         module: {
             rules: [
@@ -76,5 +72,8 @@ module.exports = ({ config, mode }) => {
         },
     })
     mergedConfig.resolve.alias = { ...mergedConfig.resolve.alias, ...aliases }
+    mergedConfig.resolve.extensions = [...config.resolve.extensions, '.svelte']
+    mergedConfig.resolve.mainFields = ['svelte', 'browser', 'module', 'main']
+
     return mergedConfig
 }
