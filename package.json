@@ -43,7 +43,7 @@
         "build:storybook": "build-storybook",
         "lint": "eslint --ext .js,.svelte,.html --ignore-path .gitignore .",
         "lint:fix": "yarn lint --fix",
-        "format": "prettier --write  **/**/*.{svelte,js} **/*.{svelte,js}  --ignore-path .gitignore"
+        "format": "prettier --write  **/**/*.{svelte,js,scss} **/*.{svelte,js,scss} *.{svelte,js,scss}  --ignore-path .gitignore"
     },
     "files": [
         "src",
