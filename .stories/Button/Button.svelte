@@ -1,9 +1,9 @@
 <script>
     import { Button } from 'svelte-admin'
 
-    function click() {
-        alert('hello from button')
-    }
+    const colors = ['primary', 'success', 'danger', 'warning']
 </script>
 
-<Button text="Click!" on:click={click} />
+{#each colors as color}
+    <Button {color}>{color}</Button>
+{/each}
