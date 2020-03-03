@@ -7,5 +7,5 @@ const story = Component => () => ({
 })
 
 storiesOf('Components', module)
-    .add('Button Component', story(Button))
+    .add('Button', story(Button))
     .add('Modal', story(Modal))

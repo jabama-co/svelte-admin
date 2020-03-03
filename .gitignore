@@ -3,4 +3,3 @@ node_modules
 public/bundle.*
 yarn-error.log
 build/
-docs/

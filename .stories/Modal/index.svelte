@@ -14,5 +14,5 @@
 <Size />
 <br />
 <br />
-<h2>PopUp</h2>
+<h2>Popup</h2>
 <PopUp />

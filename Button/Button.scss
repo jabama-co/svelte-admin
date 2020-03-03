@@ -7,6 +7,7 @@
 
     &-primary {
         background-color: $primary;
+        border: 1px solid $primary;
         &:not([disabled]):hover {
             background-color: $primary-hover;
             border-color: $primary-hover-border-color;
@@ -21,6 +22,7 @@
     }
     &-success {
         background-color: $success;
+        border: 1px solid $success;
         &:not([disabled]):hover {
             background-color: $success-hover;
             border-color: $success-hover-border-color;
@@ -35,6 +37,7 @@
     }
     &-danger {
         background-color: $danger;
+        border: 1px solid $danger;
         &:not([disabled]):hover {
             background-color: $danger-hover;
             border-color: $danger-hover-border-color;
@@ -49,6 +52,7 @@
     }
     &-warning {
         background-color: $warning;
+        border: 1px solid $warning;
         &:not([disabled]):hover {
             background-color: $warning-hover;
             border-color: $warning-hover-border-color;
@@ -63,26 +67,22 @@
     }
     &-outline-primary {
         background: none;
-        border: 1px solid;
-        border-color: $primary;
+        border: 1px solid $primary;
         color: $primary;
     }
     &-outline-danger {
         background: none;
-        border: 1px solid;
-        border-color: $danger;
+        border: 1px solid $danger;
         color: $danger;
     }
     &-outline-success {
         background: none;
-        border: 1px solid;
-        border-color: $success;
+        border: 1px solid $success;
         color: $success;
     }
     &-outline-warning {
         background: none;
-        border: 1px solid;
-        border-color: $warning;
+        border: 1px solid $warning;
         color: $warning;
     }
     &-block {
@@ -131,6 +131,7 @@ a.disabled {
     color: rgba(0, 0, 0, 0.26);
     pointer-events: none;
     cursor: default;
+    border: none;
     &:hover {
         background-color: none;
         color: none;
