@@ -1,0 +1,102 @@
+@import '../styles/variables';
+.custom-select {
+    padding: 8px;
+    color: $primary-text;
+    height: 48px;
+    width: 10rem;
+    padding: 0 16px;
+    appearance: none;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.01);
+    border: solid 2px #eeeeee;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    border-radius: 6px;
+    user-select: none;
+    .selected {
+        background-color: $primary;
+        color: $white;
+        border: 1px solid $white;
+    }
+}
+
+.select {
+    width: 100%;
+}
+.options {
+    position: absolute;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.08);
+    top: 50px;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    &-item {
+        background-color: $white;
+        padding: 16px;
+        color: $primary-text;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        &:hover {
+            background-color: $primary;
+            color: $white;
+        }
+    }
+}
+.disabled {
+    background-color: $light-grey;
+    pointer-events: none;
+}
+.chevron {
+    &:before {
+        border-style: solid;
+        border-width: 0.15em 0.15em 0 0;
+        content: '';
+        display: inline-block;
+        height: 0.423em;
+        left: 0.15em;
+        position: relative;
+        top: 0.15em;
+        vertical-align: top;
+        width: 0.45em;
+        transform: rotate(135deg);
+        margin-inline-start: 0.5rem;
+    }
+}
+.block {
+    width: 100%;
+}
+.size {
+    &-sm {
+        min-width: 10rem;
+    }
+    &-md {
+        min-width: 15rem;
+    }
+    &-lg {
+        min-width: 20rem;
+    }
+}
+$theme-dark-bg-dropdown: #424242;
+$theme-dark-border-dropdown: #ffffff33;
+
+.dark {
+    background-color: $theme-dark-bg-dropdown;
+    color: white;
+    .disabled {
+        background-color: #666666 !important;
+    }
+    .options-item {
+        background-color: $theme-dark-bg-dropdown;
+        color: white;
+        border-bottom: 1px solid $theme-dark-border-dropdown;
+        &:hover {
+            background-color: $primary;
+        }
+    }
+    .selected {
+        background-color: $primary;
+        color: $white;
+        border: 1px solid $theme-dark-border-dropdown;
+    }
+}

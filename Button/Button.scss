@@ -1,0 +1,144 @@
+@import '../styles/variables.scss';
+@import '../styles/mixins.scss';
+
+.btn {
+    --bg-color: $primary;
+    @include btn();
+
+    &-primary {
+        background-color: $primary;
+        border: 1px solid $primary;
+        &:not([disabled]):hover {
+            background-color: $primary-hover;
+            border-color: $primary-hover-border-color;
+            color: $white;
+        }
+        &:not([disabled]):active,
+        &:not([disabled]):focus {
+            background-color: $primary-hover;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+            color: $white;
+        }
+    }
+    &-success {
+        background-color: $success;
+        border: 1px solid $success;
+        &:not([disabled]):hover {
+            background-color: $success-hover;
+            border-color: $success-hover-border-color;
+            color: $white;
+        }
+        &:not([disabled]):active,
+        &:not([disabled]):focus {
+            background-color: $success-hover;
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+            color: $white;
+        }
+    }
+    &-danger {
+        background-color: $danger;
+        border: 1px solid $danger;
+        &:not([disabled]):hover {
+            background-color: $danger-hover;
+            border-color: $danger-hover-border-color;
+            color: $white;
+        }
+        &:not([disabled]):active,
+        &:not([disabled]):focus {
+            background-color: $danger-hover;
+            box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.5);
+            color: $white;
+        }
+    }
+    &-warning {
+        background-color: $warning;
+        border: 1px solid $warning;
+        &:not([disabled]):hover {
+            background-color: $warning-hover;
+            border-color: $warning-hover-border-color;
+            color: $white;
+        }
+        &:not([disabled]):active,
+        &:not([disabled]):focus {
+            background-color: $warning-hover;
+            box-shadow: 0 0 0 0.2rem rgba(255, 193, 7, 0.5);
+            color: $white;
+        }
+    }
+    &-outline-primary {
+        background: none;
+        border: 1px solid $primary;
+        color: $primary;
+    }
+    &-outline-danger {
+        background: none;
+        border: 1px solid $danger;
+        color: $danger;
+    }
+    &-outline-success {
+        background: none;
+        border: 1px solid $success;
+        color: $success;
+    }
+    &-outline-warning {
+        background: none;
+        border: 1px solid $warning;
+        color: $warning;
+    }
+    &-block {
+        display: block;
+        width: 100%;
+    }
+    &-size-md {
+        min-width: 340px;
+    }
+    &-size-sm {
+        min-width: 164px;
+    }
+
+    &-size-lg {
+        min-width: 640px;
+    }
+    .icon {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: var(--bg-color);
+        margin-inline-end: 4px;
+        @include center-horizontally();
+    }
+    &.btn-size-md.ltr .icon,
+    &.btn-size-lg.ltr .icon {
+        position: absolute;
+        left: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    &.btn-size-md.rtl .icon,
+    &.btn-size-lg.rtl .icon {
+        position: absolute;
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+a {
+    text-decoration: none;
+}
+button:disabled,
+a.disabled {
+    background-color: rgba(0, 0, 0, 0.12);
+    color: rgba(0, 0, 0, 0.26);
+    pointer-events: none;
+    cursor: default;
+    border: none;
+    &:hover {
+        background-color: none;
+        color: none;
+        box-shadow: none;
+    }
+}
+span.icon :global(*) {
+    max-width: 16px;
+    max-height: 16px;
+}
