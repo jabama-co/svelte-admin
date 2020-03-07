@@ -1,0 +1,405 @@
+@import '../styles/variables.scss';
+.textfield-outlined {
+  --mat-helper-theme: rgb(var(--mat-theme-rgb, var(--mat-primary-rgb, 33, 150, 243)));
+  --mat-helper-safari1: rgba(var(--mat-onsurface-rgb, 0, 0, 0), 0.38);
+  --mat-helper-safari2: rgba(var(--mat-onsurface-rgb, 0, 0, 0), 0.6);
+  --mat-helper-safari3: rgba(var(--mat-onsurface-rgb, 0, 0, 0), 0.87);
+  position: relative;
+  display: inline-block;
+  padding-top: 6px;
+  font-family: var(--mat-font-family, "Roboto", "Segoe UI", BlinkMacSystemFont, system-ui, -apple-system);
+  font-size: 16px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+.textfield-outlined.rtl {
+  direction: rtl
+}
+
+/* Input, Textarea */
+.textfield-outlined > input,
+.textfield-outlined > textarea {
+  box-sizing: border-box;
+  margin: 0;
+  border-style: solid;
+  border-width: 1px;
+  border-color: transparent var(--mat-helper-safari2) var(--mat-helper-safari2);
+  border-radius: 4px;
+  padding: 15px 13px 15px;
+  width: 100%;
+  height: inherit;
+  color: rgba(var(--mat-onsurface-rgb, 0, 0, 0), 0.87);
+  -webkit-text-fill-color: currentColor; /* Safari */
+  background-color: transparent;
+  box-shadow: inset 1px 0 transparent, inset -1px 0 transparent, inset 0 -1px transparent;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  caret-color: var(--mat-helper-theme);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.textfield-outlined > input:not(:focus):placeholder-shown,
+.textfield-outlined > textarea:not(:focus):placeholder-shown {
+  border-top-color: var(--mat-helper-safari2);
+}
+
+.textfield-outlined.textfield-invalid > input:not(:focus):placeholder-shown,
+.textfield-outlined.textfield-invalid > textarea:not(:focus):placeholder-shown {
+  border-top-color: $invalid;
+}
+
+/* Span */
+.textfield-outlined > input + span,
+.textfield-outlined > textarea + span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100%;
+  max-height: 100%;
+  color: rgba(var(--mat-onsurface-rgb, 0, 0, 0), 0.6);
+  font-size: 75%;
+  line-height: 15px;
+  cursor: text;
+  transition: color 0.2s, font-size 0.2s, line-height 0.2s;
+}
+
+.textfield-outlined > input:not(:focus):placeholder-shown + span,
+.textfield-outlined > textarea:not(:focus):placeholder-shown + span {
+  font-size: inherit;
+  line-height: 68px;
+}
+
+/* Corners */
+.textfield-outlined > input + span::before,
+.textfield-outlined > input + span::after,
+.textfield-outlined > textarea + span::before,
+.textfield-outlined > textarea + span::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  margin-top: 6px;
+  border-top: solid 1px var(--mat-helper-safari2);
+  min-width: 10px;
+  height: 8px;
+  pointer-events: none;
+  box-shadow: inset 0 1px transparent;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.textfield-outlined > input + span,
+.textfield-outlined > textarea + span {
+  &::before{
+    margin-right: 4px;
+    border-left: solid 1px transparent;
+    border-radius: 4px 0;
+  }
+  
+  &.no-label::before{
+    border-left: none;
+    margin-right: 0;
+  }
+}
+
+.textfield-outlined.rtl > input + span::before,
+.textfield-outlined.rtl > textarea + span::before {
+  margin-right: 0;
+  border-radius: 0 4px;
+}
+
+.textfield-outlined > input,
+.textfield-outlined.rtl > textarea {
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  &::placeholder {
+    opacity: 0;
+  }
+  &:focus{
+    &::placeholder {
+      opacity: 1;
+    }
+  }
+}
+
+.textfield-outlined > input + span,
+.textfield-outlined > textarea + span {
+  &::after{
+    flex-grow: 1;
+    margin-left: 4px;
+    border-right: solid 1px transparent;
+    border-radius: 0 4px;
+  }
+  &.no-label::after{
+    border-right: none;
+    margin-left: 0;
+  }
+}
+
+.textfield-outlined.rtl > input + span::after,
+.textfield-outlined.rtl > textarea + span::after {
+  margin-left: 0;
+  border-radius: 4px 0;
+}
+
+.textfield-outlined > input:not(:focus):placeholder-shown + span::before,
+.textfield-outlined > textarea:not(:focus):placeholder-shown + span::before,
+.textfield-outlined > input:not(:focus):placeholder-shown + span::after,
+.textfield-outlined > textarea:not(:focus):placeholder-shown + span::after {
+  border-top-color: transparent;
+}
+
+/* Hover */
+.textfield-outlined,
+.textfield-outlined {
+  &:hover > input,
+  &:hover > textarea{
+    border-color: transparent var(--mat-helper-safari3) var(--mat-helper-safari3);
+  }
+  &.textfield-invalid:hover > input,
+  &.textfield-invalid:hover > textarea{
+    border-color: transparent $invalid $invalid;
+  }
+}
+
+.textfield-outlined:hover > input + span::before,
+.textfield-outlined:hover > textarea + span::before,
+.textfield-outlined:hover > input + span::after,
+.textfield-outlined:hover > textarea + span::after {
+  border-top-color: var(--mat-helper-safari3);
+}
+
+.textfield-outlined:hover > input:not(:focus):placeholder-shown,
+.textfield-outlined:hover > textarea:not(:focus):placeholder-shown {
+  border-color: var(--mat-helper-safari3);
+}
+
+.textfield-outlined.textfield-invalid:hover > input + span::before,
+.textfield-outlined.textfield-invalid:hover > textarea + span::before,
+.textfield-outlined.textfield-invalid:hover > input + span::after,
+.textfield-outlined.textfield-invalid:hover > textarea + span::after {
+  border-top-color: $invalid;
+}
+
+.textfield-outlined.textfield-invalid:hover > input:not(:focus):placeholder-shown,
+.textfield-outlined.textfield-invalid:hover > textarea:not(:focus):placeholder-shown {
+  border-color: $invalid;
+}
+
+/* Focus */
+.textfield-outlined > input:focus,
+.textfield-outlined > textarea:focus {
+  border-color: transparent var(--mat-helper-theme) var(--mat-helper-theme);
+  box-shadow: inset 1px 0 var(--mat-helper-theme), inset -1px 0 var(--mat-helper-theme), inset 0 -1px var(--mat-helper-theme);
+  outline: none;
+}
+
+.textfield-outlined.textfield-invalid > input:focus,
+.textfield-outlined.textfield-invalid > textarea:focus {
+  border-color: transparent $invalid $invalid;
+  box-shadow: inset 1px 0 $invalid, inset -1px 0 $invalid, inset 0 -1px $invalid;
+}
+
+.textfield-outlined > input:focus + span,
+.textfield-outlined > textarea:focus + span {
+  color: var(--mat-helper-theme);
+}
+
+.textfield-outlined.textfield-invalid > input:focus + span,
+.textfield-outlined.textfield-invalid > textarea:focus + span {
+  color: $invalid;
+}
+
+.textfield-outlined > input:focus + span::before,
+.textfield-outlined > input:focus + span::after,
+.textfield-outlined > textarea:focus + span::before,
+.textfield-outlined > textarea:focus + span::after {
+  border-top-color: var(--mat-helper-theme) !important;
+  box-shadow: inset 0 1px var(--mat-helper-theme);
+}
+
+.textfield-outlined.textfield-invalid > input:focus + span::before,
+.textfield-outlined.textfield-invalid > input:focus + span::after,
+.textfield-outlined.textfield-invalid > textarea:focus + span::before,
+.textfield-outlined.textfield-invalid > textarea:focus + span::after {
+  border-top-color: $invalid !important;
+  box-shadow: inset 0 1px $invalid;
+}
+
+/* Disabled */
+.textfield-outlined > input:disabled,
+.textfield-outlined > input:disabled + span,
+.textfield-outlined > textarea:disabled,
+.textfield-outlined > textarea:disabled + span {
+  border-color: transparent var(--mat-helper-safari1) var(--mat-helper-safari1) !important;
+  color: rgba(var(--mat-onsurface-rgb, 0, 0, 0), 0.38);
+  pointer-events: none;
+}
+
+.textfield-outlined > input:disabled + span::before,
+.textfield-outlined > input:disabled + span::after,
+.textfield-outlined > textarea:disabled + span::before,
+.textfield-outlined > textarea:disabled + span::after {
+  border-top-color: var(--mat-helper-safari1) !important;
+}
+
+.textfield-outlined > input:disabled:placeholder-shown,
+.textfield-outlined > input:disabled:placeholder-shown + span,
+.textfield-outlined > textarea:disabled:placeholder-shown,
+.textfield-outlined > textarea:disabled:placeholder-shown + span {
+  border-top-color: var(--mat-helper-safari1) !important;
+}
+
+.textfield-outlined > input:disabled:placeholder-shown + span::before,
+.textfield-outlined > input:disabled:placeholder-shown + span::after,
+.textfield-outlined > textarea:disabled:placeholder-shown + span::before,
+.textfield-outlined > textarea:disabled:placeholder-shown + span::after {
+  border-top-color: transparent !important;
+}
+
+.textfield-with-leading-icon.textfield-outlined .textfield__input {
+  padding-left: 48px;
+  padding-right: 16px;
+}
+
+.textfield-with-trailing-icon.textfield-outlined .textfield__input {
+  padding-left: 16px;
+  padding-right: 48px;
+}
+
+.textfield-with-leading-icon.textfield-outlined.rtl .textfield__input {
+  padding-right: 48px;
+  padding-left: 16px;
+}
+
+.textfield-with-trailing-icon.textfield-outlined.rtl .textfield__input {
+  padding-right: 16px;
+  padding-left: 48px;
+}
+
+.textfield-with-leading-icon.textfield-with-trailing-icon :global(.textfield__icon) {
+  left: 16px;
+  right: auto;
+}
+
+.textfield-with-leading-icon.textfield-with-trailing-icon :global(.textfield__icon)~:global(.textfield__icon) {
+  right: 12px;
+  left: auto;
+}
+
+.textfield-with-leading-icon.textfield-with-trailing-icon.rtl :global(.textfield__icon)~:global(.textfield__icon) {
+  left: 12px;
+  right: auto;
+}
+
+.textfield-with-leading-icon.textfield-with-trailing-icon.rtl :global(.textfield__icon) {
+  right: 16px;
+  left: auto;
+}
+
+.textfield-with-leading-icon.textfield-with-trailing-icon {
+  .textfield__input {
+      padding-left: 48px;
+      padding-right: 48px;
+  }
+  &:not(:focus):placeholder-shown + span {
+      padding-left: 36px;
+      &::before, &::after {
+      opacity:0;
+  }
+  }
+}
+
+.textfield-outlined.textfield-with-leading-icon :global(.textfield__icon) {
+     left: 16px;
+     right: auto;
+}
+
+.textfield-with-trailing-icon.textfield-outlined :global(.textfield__icon) {
+      right: 16px;
+}
+
+.textfield-with-trailing-icon.textfield-outlined.rtl :global(.textfield__icon) {
+      right: auto;
+      left: 16px;
+}
+
+.textfield-outlined.textfield-with-leading-icon.rtl :global(.textfield__icon) {
+     right: 16px;
+     left: auto;
+}
+
+.textfield-with-leading-icon.textfield-outlined.rtl > input:not(:focus):placeholder-shown + span,
+.textfield-with-leading-icon.textfield-outlined.rtl > textarea:not(:focus):placeholder-shown + span {
+  padding-left: 0;
+  padding-right: 36px;
+  right:0;
+  &::before, &::after {
+      opacity:0;
+  }
+}
+
+.textfield-with-leading-icon.textfield-outlined > input:not(:focus):placeholder-shown + span,
+.textfield-with-leading-icon.textfield-outlined > textarea:not(:focus):placeholder-shown + span {
+  padding-right: 0;
+  padding-left: 36px;
+  right:0;
+  &::before, &::after {
+      opacity:0;
+  }
+}
+
+
+
+.textfield-with-trailing-icon.textfield-outlined > input:not(:focus):placeholder-shown + span,
+.textfield-with-trailing-icon.textfield-outlined > textarea:not(:focus):placeholder-shown + span {
+  font-size: inherit;
+  line-height: 68px;
+  right:0;
+  &::before, &::after {
+      opacity:0;
+  }
+}
+
+.textfield-with-trailing-icon.textfield-outlined.rtl > input:not(:focus):placeholder-shown + span,
+.textfield-with-trailing-icon.textfield-outlined.rtl > textarea:not(:focus):placeholder-shown + span {
+  padding-left: 36px;
+}
+
+.textfield-with-leading-icon.textfield-with-trailing-icon.rtl {
+  .textfield__input {
+      padding-left: 48px;
+      padding-right: 48px;
+  }
+}
+
+.textfield-outlined.textfield-invalid {
+  input {
+    border-color: transparent $invalid $invalid;
+  }
+  span {
+    color:$invalid;
+    &::before, &::after{
+      border-color: $invalid transparent;
+    }
+  }
+}
+
+/* Faster transition in Safari for less noticable fractional font-size issue */
+@media not all and (min-resolution:.001dpcm) {
+  @supports (-webkit-appearance:none) {
+      .textfield-outlined > input,
+      .textfield-outlined > input + span,
+      .textfield-outlined > textarea,
+      .textfield-outlined > textarea + span,
+      .textfield-outlined > input + span::before,
+      .textfield-outlined > input + span::after,
+      .textfield-outlined > textarea + span::before,
+      .textfield-outlined > textarea + span::after {
+          transition-duration: 0.1s;
+      }
+  }
+}
