@@ -1,0 +1,86 @@
+@import '../styles/variables.scss';
+@import '../styles/mixins.scss';
+
+table {
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.06);
+    background-color: $white;
+    border-radius: 4px;
+    width: 100%;
+    height: auto;
+    border-spacing: 0 0;
+    & :global(tr):hover {
+        background: $light-grey;
+    }
+}
+table :global(thead) {
+    box-shadow: $bottom-shadow;
+    min-width: 0;
+    padding: 16px;
+}
+table :global(tbody) {
+    border-radius: 6px;
+    min-width: 0;
+}
+
+table :global(tr, th, td) {
+    min-width: 0;
+    width: 100%;
+    @include center-horizontally();
+    justify-content: end;
+}
+table :global(th, td) {
+    padding: 16px;
+    min-width: 0;
+    border: none;
+}
+table :global(tr) {
+    border-bottom: 1px solid $table-bordered-color;
+}
+table.bordered :global(td) {
+    border: 1px solid $table-bordered-color;
+}
+table.bordered :global(th) {
+    border: 1px solid $table-bordered-color;
+}
+table.bordered {
+    border: 1px solid $table-bordered-color;
+}
+table.dark {
+    background-color: #424242;
+    color: $white;
+    border-bottom: 1px solid $white;
+    & :global(tr):hover {
+        background: rgba(154, 178, 202, 0.15);
+    }
+}
+table.bordered.dark {
+    border: 1px solid $table-bordered-dark-color;
+}
+table.dark :global(tr) {
+    border-bottom: 0.5px solid $table-bordered-dark-color;
+}
+table.bordered.dark :global(td) {
+    border: 1px solid $table-bordered-dark-color;
+}
+table.bordered.dark :global(th) {
+    border: 1px solid $table-bordered-dark-color;
+}
+
+.size {
+    &-sm {
+        width: 480px;
+    }
+    &-md {
+        width: 770px;
+    }
+    &-lg {
+        width: 1024px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .responsive {
+        overflow-x: auto;
+        width: 100%;
+    }
+}
